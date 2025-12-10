@@ -1,0 +1,33 @@
+{
+  "ServiceName": "techstore-support-api",
+  "SourceConfiguration": {
+    "AuthenticationConfiguration": {
+      "AccessRoleArn": "arn:aws:iam::761069949460:role/service-role/AppRunnerECRAccessRole"
+    },
+    "AutoDeploymentsEnabled": true,
+    "ImageRepository": {
+      "ImageIdentifier": "761069949460.dkr.ecr.us-east-1.amazonaws.com/techstore-support-api:latest",
+      "ImageRepositoryType": "ECR",
+      "ImageConfiguration": {
+        "Port": "8000",
+        "RuntimeEnvironmentVariables": {
+          "OPENAI_API_KEY": "PLACEHOLDER_ADD_IN_CONSOLE",
+          "MCP_SERVER_URL": "https://vipfapwm3x.us-east-1.awsapprunner.com/mcp",
+          "ALLOWED_ORIGINS": "http://localhost:3000"
+        }
+      }
+    }
+  },
+  "InstanceConfiguration": {
+    "Cpu": "1024",
+    "Memory": "2048"
+  },
+  "HealthCheckConfiguration": {
+    "Protocol": "HTTP",
+    "Path": "/health",
+    "Interval": 10,
+    "Timeout": 5,
+    "HealthyThreshold": 1,
+    "UnhealthyThreshold": 5
+  }
+}
